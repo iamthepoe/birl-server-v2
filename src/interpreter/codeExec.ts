@@ -9,7 +9,7 @@ import fs from 'fs';
 import {compiler} from './compiler';
 import {birlToC} from './birlToC';
 
-module.exports = function (bCode, stdin, res) {
+function birl(bCode, stdin, res) {
     const code = birlToC(bCode);
     var rName = crypto.randomUUID();
   
@@ -42,4 +42,4 @@ module.exports = function (bCode, stdin, res) {
         });
     });
 };
-
+export {birl};
