@@ -4,7 +4,7 @@
  * para C.
  *
  ***********************************************************************/
-module.exports = function (birlCode) {
+export default function (birlCode) {
   // A tradução é feita com um simples replace no código birl com o seu respectivo valor
   //em C, a regex (?=(?:[^"]|"[^"]*")*$) evita que sejam substituido os valores dentro
   //de aspas.
