@@ -1,0 +1,23 @@
+{
+  "name": "birl-server",
+  "version": "1.0.0",
+  "description": "O servidor da linguagem BIRL, mas escrito em Typescript e Rust.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "iamthepoe",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.2.5",
+    "tsup": "^6.7.0",
+    "tsx": "^3.12.7",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
