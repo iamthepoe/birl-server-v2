@@ -6,6 +6,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.listen(3003, ()=>{
+app.listen(3003, () => {
   console.log('Server running at http://localhost:3003');
 });
