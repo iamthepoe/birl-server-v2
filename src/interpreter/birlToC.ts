@@ -4,7 +4,7 @@
  * para C.
  *
  ***********************************************************************/
-export default function (birlCode) {
+function birlToC(birlCode) {
   // A tradução é feita com um simples replace no código birl com o seu respectivo valor
   //em C, a regex (?=(?:[^"]|"[^"]*")*$) evita que sejam substituido os valores dentro
   //de aspas.
@@ -98,3 +98,5 @@ export default function (birlCode) {
 
   return code;
 };
+
+export {birlToC};
