@@ -5,9 +5,10 @@
  * lação).
  *
  ***********************************************************************/
+
+import { exec } from "child_process";
+
 function compiler(file, res) {
-  const exec = require('child_process').exec;
-  const fs = require('fs');
 
   //compila com o gcc
   exec(

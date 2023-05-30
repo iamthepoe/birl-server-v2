@@ -4,8 +4,8 @@
   "description": "O servidor da linguagem BIRL, mas escrito em Typescript e Rust.",
   "main": "index.js",
   "scripts": {
-    "start:dev":"npx tsx src/server.ts",
-    "style:check": "prettier --check 'src/**/*.ts'", 
+    "start:dev": "npx tsx src/server.ts",
+    "style:check": "prettier --check 'src/**/*.ts'",
     "style:fix": "prettier --write 'src/**/*.ts'"
   },
   "author": "iamthepoe",
