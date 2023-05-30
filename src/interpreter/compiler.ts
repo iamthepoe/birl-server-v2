@@ -6,10 +6,9 @@
  *
  ***********************************************************************/
 
-import { exec } from "child_process";
+import { exec } from 'child_process';
 
 function compiler(file, res) {
-
   //compila com o gcc
   exec(
     'gcc ' +

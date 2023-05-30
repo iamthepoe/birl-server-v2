@@ -13,7 +13,7 @@ app.post('/compile', async (req, res) => {
   console.log("POST AT '/compile'");
 
   try {
-    const {code, stdin} = req.body;
+    const { code, stdin } = req.body;
     if (!code.trim() || codeVerification(code)) {
       res.json({
         error: 'ERRO DE COMPILAÇÃO, CUMPADI!!\n',
