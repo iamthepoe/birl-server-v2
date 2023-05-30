@@ -3,11 +3,12 @@
  * birlToC.js: recebe um código em BIRL e retorna o mesmo traduzido
  * para C.
  *
+ * A tradução é feita com um simples replace no código birl com o seu respectivo valor
+ * em C, a regex (?=(?:[^"]|"[^"]*")*$) evita que sejam substituido os valores dentro
+ * de aspas.
  ***********************************************************************/
 function birlToC(birlCode: string) {
-  // A tradução é feita com um simples replace no código birl com o seu respectivo valor
-  //em C, a regex (?=(?:[^"]|"[^"]*")*$) evita que sejam substituido os valores dentro
-  //de aspas.
+  
   var code = birlCode;
 
   if (code == null) return '';
