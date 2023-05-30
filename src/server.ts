@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { codeVerification } from './interpreter/codeVerification';
-import { BirlInterpreter} from './interpreter/birlToC';
+import { BirlInterpreter } from './interpreter/birlToC';
 
 const birlInterpreter = new BirlInterpreter();
 
