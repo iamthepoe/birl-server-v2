@@ -9,14 +9,14 @@
  ***********************************************************************/
 
 export class BirlConverter {
-  private printCode(code: string){
+  private printCode(code: string): void {
     console.log('-----------------------------------------');
     console.log('CODIGO GERADO:');
     console.log(code);
     console.log('-----------------------------------------');
   }
 
-  public convertToC(code: string) {
+  public convertToC(code: string): string {
     if (!code) return '';
 
     //Traduzindo a MAIN
@@ -109,4 +109,3 @@ export class BirlConverter {
     return code;
   }
 }
-
