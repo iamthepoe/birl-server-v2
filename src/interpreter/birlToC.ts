@@ -148,31 +148,22 @@ export class BirlConverter {
 
   public executeCode(birlCode: string, stdin: string, res) {
     const code = this.convertToC(birlCode);
-    var randomName = crypto.randomUUID();
+    var fileName = crypto.randomUUID();
 
     // Escrevendo a stdin
-    fs.writeFile(randomName + '.txt', stdin, function (error) {
+    fs.writeFile(fileName + '.txt', stdin, function (error) {
       // Se ocorrer erro, retorna a resposta
-      if (error) {
-        res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({ error: 'ERRO INTERNO PAI!\n', stdout: null }));
-      }
+      if (error) res.json({ error: 'ERRO INTERNO PAI!\n', stdout: null });
 
       // Se não, escreve o código em um .c com nome aleatorio
       //e chama compiler
 
-      fs.writeFile(randomName + '.c', code, function (err) {
-        // se ocorrer erro, retorna JSON
-        if (err) {
-          res.setHeader('Content-Type', 'application/json');
-          res.end(
-            JSON.stringify({ error: 'ERRO INTERNO PAI!\n', stdout: null })
-          );
-          return;
-        }
+      fs.writeFile(fileName + '.c', code, function (err) {
+        if (err) res.json({ error: 'ERRO INTERNO PAI!\n', stdout: null });
+        
         // caso contrário, compila e executa
         process.nextTick(function () {
-          this.compile(randomName, res);
+          this.compile(fileName, res);
         });
       });
     });
