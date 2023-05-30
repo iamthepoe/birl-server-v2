@@ -126,21 +126,17 @@ export class BirlConverter {
     const compileComand = `gcc ${file}.c -o ${file} -lm && timeout 2s ./${file} < ${file}.txt`;
 
     //compila com o gcc
-    exec(compileComand, function (error, stdout, stderr) {
-      //se houver erro de compilação, respondemos a requisição com um erro.
-      res.setHeader('Content-Type', 'application/json');
+    exec(compileComand, function (error, stdout) {
 
       if (error) {
         console.log('ERROR: ' + error);
-        res.end(
-          JSON.stringify({
+        res.json({
             error: 'CODEI PRA CARALHO MAS NÃO COMPILOU!\n',
             stdout: null,
-          })
-        );
+          });
       } else {
         console.log('STDOUT: ' + stdout);
-        res.end(JSON.stringify({ error: null, stdout: stdout }));
+        res.json({ error: null, stdout: stdout });
       }
     }).on('close', function () {
       exec('rm ' + file + '*', function (error, stdout, stderr) {
