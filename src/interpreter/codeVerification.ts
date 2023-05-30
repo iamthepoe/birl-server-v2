@@ -4,7 +4,7 @@
 * pode ser executado ou nao.
 *
 ***********************************************************************/
-function codeVerification(birlCode) {
+function codeVerification(birlCode: string) {
     return birlCode.match(/((#.*include.*)|(system)|(popen)|(fopen)|(fgets)|(execl))/g);
 }
 
