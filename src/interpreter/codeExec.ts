@@ -7,10 +7,12 @@
  ***********************************************************************/
 import fs from 'fs';
 import { compiler } from './compiler';
-import { birlToC } from './birlToC';
+import { BirlConverter } from './birlToC';
+
+const birlConverter = new BirlConverter();
 
 function birl(birlCode: string, stdin: string, res) {
-  const code = birlToC(birlCode);
+  const code = birlConverter.convertToC(birlCode);
   var randomName = crypto.randomUUID();
 
   // Escrevendo a stdin
