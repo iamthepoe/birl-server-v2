@@ -9,6 +9,7 @@
  ***********************************************************************/
 import { exec } from 'child_process';
 import fs from 'fs';
+import { IClientResponse } from '../interfaces/IClientResponse';
 
 export class BirlInterpreter {
   private printCode(code: string): void {
@@ -129,36 +130,40 @@ export class BirlInterpreter {
     return birlCode;
   }
 
-  private compile(file: string, res) {
+  private compile(file: string) {
     const compileCommand = `gcc ${file}.c -o ${file} -lm && timeout 2s ./${file} < ${file}.txt`;
 
     //compila com o gcc
     exec(compileCommand, (error, stdout) => {
       if (error) {
         console.log('ERROR: ' + error);
-        res.json({
+
+        const res: IClientResponse = {
           error: 'CODEI PRA CARALHO MAS NÃO COMPILOU!\n',
           stdout: null,
-        });
-      } else {
-        console.log('STDOUT: ' + stdout);
-        res.json({ error: null, stdout: stdout });
+        };
+
+        return res;
       }
+
+      console.log('STDOUT: ' + stdout);
+      const res: IClientResponse = { error: null, stdout };
+      return res;
     }).on('close', () => {
-      exec('rm ' + file + '*', ()=> {
+      exec('rm ' + file + '*', () => {
         console.log('-----------------------------------------');
         console.log('REMOVING FILES');
       });
     });
   }
 
-  public async executeCode(birlCode: string, stdin: string, res) {
+  public async executeCode(birlCode: string, stdin: string) {
     const code = this.convertToC(birlCode);
     const fileName = 'birl-' + Date.now();
 
     await this.writeFile(`${fileName}.txt`, stdin);
     await this.writeFile(`${fileName}.c`, code);
 
-    this.compile(fileName, res);
+    this.compile(fileName);
   }
 }
