@@ -11,10 +11,10 @@ import { birlToC } from './birlToC';
 
 function birl(birlCode: string, stdin: string, res) {
   const code = birlToC(birlCode);
-  var rName = crypto.randomUUID();
+  var randomName = crypto.randomUUID();
 
   // Escrevendo a stdin
-  fs.writeFile(rName + '.txt', stdin, function (error) {
+  fs.writeFile(randomName + '.txt', stdin, function (error) {
     // Se ocorrer erro, retorna a resposta
     if (error) {
       res.setHeader('Content-Type', 'application/json');
@@ -24,7 +24,7 @@ function birl(birlCode: string, stdin: string, res) {
     // Se não, escreve o código em um .c com nome aleatorio
     //e chama compiler
 
-    fs.writeFile(rName + '.c', code, function (err) {
+    fs.writeFile(randomName + '.c', code, function (err) {
       // se ocorrer erro, retorna JSON
       if (err) {
         res.setHeader('Content-Type', 'application/json');
@@ -33,7 +33,7 @@ function birl(birlCode: string, stdin: string, res) {
       }
       // caso contrário, compila e executa
       process.nextTick(function () {
-        compiler(rName, res);
+        compiler(randomName, res);
       });
     });
   });
