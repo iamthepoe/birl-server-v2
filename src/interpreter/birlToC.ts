@@ -133,7 +133,7 @@ export class BirlInterpreter {
     const compileCommand = `gcc ${file}.c -o ${file} -lm && timeout 2s ./${file} < ${file}.txt`;
 
     //compila com o gcc
-    exec(compileCommand, function (error, stdout) {
+    exec(compileCommand, (error, stdout) => {
       if (error) {
         console.log('ERROR: ' + error);
         res.json({
