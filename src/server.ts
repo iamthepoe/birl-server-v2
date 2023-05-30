@@ -17,17 +17,17 @@ app.post('/compile', async (req, res) => {
   try {
     const { code, stdin } = req.body;
     if (!code.trim() || codeVerification(code)) {
-      res.json({
+      res.status(400).json({
         error: 'ERRO DE COMPILAÇÃO, CUMPADI!!\n',
         stdout: null,
       });
-    } else {
-      const data = await client.executeCode(code, stdin);
-      res.status(data.code).json({
-        stdout: data.stdout,
-        error: data.error
-      });
     }
+
+    const data = await client.executeCode(code, stdin);
+    res.status(data.code).json({
+      stdout: data.stdout,
+      error: data.error
+    });
   } catch (error) {
     res.status(500).json({ error: 'Erro no servidor' });
   }
