@@ -10,7 +10,7 @@
 import { exec } from 'child_process';
 import fs from 'fs';
 
-export class BirlConverter {
+export class BirlInterpreter {
   private printCode(code: string): void {
     console.log('-----------------------------------------');
     console.log('CODIGO GERADO:');
@@ -18,7 +18,13 @@ export class BirlConverter {
     console.log('-----------------------------------------');
   }
 
-  public convertToC(birlCode: string): string {
+  private async writeFile(fileName: string, content: any) {
+    fs.writeFile(fileName, content, (error) => {
+      if (error) return { error: 'ERRO INTERNO PAI!\n', stdout: null };
+    });
+  }
+
+  private convertToC(birlCode: string): string {
     if (!birlCode) return '';
 
     //Traduzindo a MAIN
@@ -123,7 +129,7 @@ export class BirlConverter {
     return birlCode;
   }
 
-  public compile(file: string, res) {
+  private compile(file: string, res) {
     const compileCommand = `gcc ${file}.c -o ${file} -lm && timeout 2s ./${file} < ${file}.txt`;
 
     //compila com o gcc
@@ -146,26 +152,15 @@ export class BirlConverter {
     });
   }
 
-  public executeCode(birlCode: string, stdin: string, res) {
+  public async executeCode(birlCode: string, stdin: string, res) {
     const code = this.convertToC(birlCode);
-    var fileName = crypto.randomUUID();
+    const fileName = 'birl-' + Date.now();
 
-    // Escrevendo a stdin
-    fs.writeFile(fileName + '.txt', stdin, function (error) {
-      // Se ocorrer erro, retorna a resposta
-      if (error) res.json({ error: 'ERRO INTERNO PAI!\n', stdout: null });
+    await this.writeFile(`${fileName}.txt`, stdin);
+    await this.writeFile(`${fileName}.c`, code);
 
-      // Se não, escreve o código em um .c com nome aleatorio
-      //e chama compiler
-
-      fs.writeFile(fileName + '.c', code, function (err) {
-        if (err) res.json({ error: 'ERRO INTERNO PAI!\n', stdout: null });
-        
-        // caso contrário, compila e executa
-        process.nextTick(function () {
-          this.compile(fileName, res);
-        });
-      });
+    process.nextTick(() => {
+      this.compile(fileName, res);
     });
   }
 }
