@@ -35,7 +35,7 @@ function birl(birlCode: string, stdin: string, res) {
       }
       // caso contrário, compila e executa
       process.nextTick(function () {
-        compiler(randomName, res);
+        birlConverter.compile(randomName, res);
       });
     });
   });
