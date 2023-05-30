@@ -122,12 +122,11 @@ export class BirlConverter {
     return birlCode;
   }
 
-  public compileCodeC(file, res) {
-    const compileComand = `gcc ${file}.c -o ${file} -lm && timeout 2s ./${file} < ${file}.txt`;
+  public compile(file: string, res) {
+    const compileCommand = `gcc ${file}.c -o ${file} -lm && timeout 2s ./${file} < ${file}.txt`;
 
     //compila com o gcc
-    exec(compileComand, function (error, stdout) {
-
+    exec(compileCommand, function (error, stdout) {
       if (error) {
         console.log('ERROR: ' + error);
         res.json({
