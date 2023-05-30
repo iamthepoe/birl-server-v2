@@ -97,6 +97,6 @@ function birlToC(birlCode: string) {
   console.log('-----------------------------------------');
 
   return code;
-};
+}
 
-export {birlToC};
+export { birlToC };
