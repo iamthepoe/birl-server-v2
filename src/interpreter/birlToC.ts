@@ -9,6 +9,13 @@
  ***********************************************************************/
 
 export class BirlConverter {
+  private printCode(code: string){
+    console.log('-----------------------------------------');
+    console.log('CODIGO GERADO:');
+    console.log(code);
+    console.log('-----------------------------------------');
+  }
+
   public convertToC(code: string) {
     if (!code) return '';
 
@@ -97,10 +104,7 @@ export class BirlConverter {
     //Colocando as bibliotecas
     code = '#include <stdio.h>\n#include <math.h>\n\n' + code;
 
-    console.log('-----------------------------------------');
-    console.log('CODIGO GERADO:');
-    console.log(code);
-    console.log('-----------------------------------------');
+    this.printCode(code);
 
     return code;
   }
