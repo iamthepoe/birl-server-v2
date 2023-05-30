@@ -8,31 +8,23 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/compile', function (req, res) {
+app.post('/compile', async (req, res) => {
   console.log('-----------------------------------------');
   console.log("POST AT '/compile'");
 
-  // Lendo o JSON
-  var body = '';
-  req.on('data', function (data) {
-    body += data;
-  });
-
-  // Enviando o código e o stdin para a execução do código
-  req.on('end', function () {
-    var json = JSON.parse(body);
-    if (json.code == null || codeVerification(json.code)) {
-      res.setHeader('Content-Type', 'application/json');
-      res.end(
-        JSON.stringify({
-          error: 'ERRO DE COMPILAÇÃO, CUMPADI!!\n',
-          stdout: null,
-        })
-      );
+  try {
+    const {code, stdin} = req.body;
+    if (!code.trim() || codeVerification(code)) {
+      res.json({
+        error: 'ERRO DE COMPILAÇÃO, CUMPADI!!\n',
+        stdout: null,
+      });
     } else {
-      birl(json.code, json.stdin, res);
+      birl(code, stdin, res);
     }
-  });
+  } catch (error) {
+    res.status(500).json({ error: 'Erro no servidor' });
+  }
 });
 
 app.listen(3000, () => {
