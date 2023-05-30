@@ -16,96 +16,96 @@ export class BirlConverter {
     console.log('-----------------------------------------');
   }
 
-  public convertToC(code: string): string {
-    if (!code) return '';
+  public convertToC(birlCode: string): string {
+    if (!birlCode) return '';
 
     //Traduzindo a MAIN
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(HORA DO SHOW)(?=(?:[^"]|"[^"]*")*$)/g,
       'int main (void) {'
     );
     //Traduzindo o BIRL
-    code = code.replace(/(BIRL)(?=(?:[^"]|"[^"]*")*$)/g, '}');
+    birlCode = birlCode.replace(/(BIRL)(?=(?:[^"]|"[^"]*")*$)/g, '}');
     //Traduzindo printf
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(CE QUER VER ESSA PORRA[\?]?)(?=(?:[^"]|"[^"]*")*$)/g,
       'printf'
     );
     //Traduzindo scanf
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(QUE QUE CE QUER MONSTR[AÃ]O[\?]?)(?=(?:[^"]|"[^"]*")*$)/g,
       'scanf'
     );
     //Traduzindo if
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(ELE QUE A GENTE QUER[\?]?)(?=(?:[^"]|"[^"]*")*$)(.*)/g,
       'if $2 {'
     );
     //Traduzindo else
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(N[AÃ]O VAI DAR N[AÃ]O)(?=(?:[^"]|"[^"]*")*$)/g,
       '} else {'
     );
     //Traduzindo else if
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(QUE NUM VAI DAR O QUE[\?]?)(?=(?:[^"]|"[^"]*")*$)(.*)/g,
       '} else if $2 {'
     );
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(QUE N[AÃ]O VAI DAR O QUE[\?]?)(?=(?:[^"]|"[^"]*")*$)(.*)/g,
       '} else if $2 {'
     );
     //Traduzindo while
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(NEGATIVA BAMBAM)(?=(?:[^"]|"[^"]*")*$)(.*)/g,
       'while $2 {'
     );
     //Traduzindo for
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(MAIS QUERO MAIS)(?=(?:[^"]|"[^"]*")*$)(.*)/g,
       'for $2 {'
     );
     //Traduzindo declaração de função
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(O[H]? O HOM[EI][M]? A[IÍ] PO[ \t]*\()(?=(?:[^"]|"[^"]*")*$)(.*)(\))/g,
       '$2 {'
     );
     //Traduzindo retorno da função
-    code = code.replace(/(BORA CUMPAD[EI])(?=(?:[^"]|"[^"]*")*$)/g, 'return');
+    birlCode = birlCode.replace(/(BORA CUMPAD[EI])(?=(?:[^"]|"[^"]*")*$)/g, 'return');
     //Traduzindo chamada de função
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(AJUDA O MALUCO TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g,
       ' '
     );
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(AJUDA O MALUCO QUE TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g,
       ' '
     );
     //Traduzindo parada no código
-    code = code.replace(
+    birlCode = birlCode.replace(
       /(SAI FILH[OA] DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g,
       'break'
     );
     //Traduzindo continuar o código
-    code = code.replace(/(VAMO MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
+    birlCode = birlCode.replace(/(VAMO MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
 
     //Traduzindo os tipos de dados
-    code = code.replace(/(FRANGO)(?=(?:[^"]|"[^"]*")*$)/g, 'char');
-    code = code.replace(/(MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'int');
-    code = code.replace(/(MONSTRINHO)(?=(?:[^"]|"[^"]*")*$)/g, 'short');
-    code = code.replace(/(MONSTR[ÃA]O)(?=(?:[^"]|"[^"]*")*$)/g, 'long');
-    code = code.replace(
+    birlCode = birlCode.replace(/(FRANGO)(?=(?:[^"]|"[^"]*")*$)/g, 'char');
+    birlCode = birlCode.replace(/(MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'int');
+    birlCode = birlCode.replace(/(MONSTRINHO)(?=(?:[^"]|"[^"]*")*$)/g, 'short');
+    birlCode = birlCode.replace(/(MONSTR[ÃA]O)(?=(?:[^"]|"[^"]*")*$)/g, 'long');
+    birlCode = birlCode.replace(
       /(TRAP[EÉ]ZIO DESCENDENTE)(?=(?:[^"]|"[^"]*")*$)/g,
       'double'
     );
-    code = code.replace(/(TRAP[EÉ]ZIO)(?=(?:[^"]|"[^"]*")*$)/g, 'float');
-    code = code.replace(/(B[IÍ]CEPS)(?=(?:[^"]|"[^"]*")*$)/g, 'unsigned');
+    birlCode = birlCode.replace(/(TRAP[EÉ]ZIO)(?=(?:[^"]|"[^"]*")*$)/g, 'float');
+    birlCode = birlCode.replace(/(B[IÍ]CEPS)(?=(?:[^"]|"[^"]*")*$)/g, 'unsigned');
 
     //Colocando as bibliotecas
-    code = '#include <stdio.h>\n#include <math.h>\n\n' + code;
+    birlCode = '#include <stdio.h>\n#include <math.h>\n\n' + birlCode;
 
-    this.printCode(code);
+    this.printCode(birlCode);
 
-    return code;
+    return birlCode;
   }
 }
