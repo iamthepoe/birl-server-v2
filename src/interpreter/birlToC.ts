@@ -159,8 +159,6 @@ export class BirlInterpreter {
     await this.writeFile(`${fileName}.txt`, stdin);
     await this.writeFile(`${fileName}.c`, code);
 
-    process.nextTick(() => {
-      this.compile(fileName, res);
-    });
+    this.compile(fileName, res);
   }
 }

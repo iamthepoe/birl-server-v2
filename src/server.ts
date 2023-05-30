@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import { codeVerification } from './interpreter/codeVerification';
-import { BirlConverter } from './interpreter/birlToC';
+import { BirlInterpreter} from './interpreter/birlToC';
 
-const birlConverter = new BirlConverter();
+const birlInterpreter = new BirlInterpreter();
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.post('/compile', async (req, res) => {
         stdout: null,
       });
     } else {
-      birlConverter.executeCode(code, stdin, res);
+      birlInterpreter.executeCode(code, stdin, res);
     }
   } catch (error) {
     res.status(500).json({ error: 'Erro no servidor' });
