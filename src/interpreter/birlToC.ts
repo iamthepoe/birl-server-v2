@@ -144,7 +144,7 @@ export class BirlInterpreter {
         console.log('STDOUT: ' + stdout);
         res.json({ error: null, stdout: stdout });
       }
-    }).on('close', function () {
+    }).on('close', () => {
       exec('rm ' + file + '*', ()=> {
         console.log('-----------------------------------------');
         console.log('REMOVING FILES');
