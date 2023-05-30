@@ -19,7 +19,7 @@ export class BirlClient {
     console.log('-----------------------------------------');
   }
 
-  private async writeFile(fileName: string, content: any) {
+  private async writeFile(fileName: string, content: any): Promise<void> {
     fs.writeFile(fileName, content, (error) => {
       if (error) return { error: 'ERRO INTERNO PAI!\n', stdout: null };
     });
@@ -169,12 +169,23 @@ export class BirlClient {
   }
 
   public async executeCode(birlCode: string, stdin: string) {
-    const code = this.convertToC(birlCode);
-    const fileName = 'birl-' + Date.now();
+    try{
+      const code = this.convertToC(birlCode);
+      const fileName = 'birl-' + Date.now();
 
-    await this.writeFile(`${fileName}.txt`, stdin);
-    await this.writeFile(`${fileName}.c`, code);
+      await this.writeFile(`${fileName}.txt`, stdin);
+      await this.writeFile(`${fileName}.c`, code);
 
-    return this.compile(fileName);
+      return this.compile(fileName);
+    }catch{
+      const res: IClientResponse = {
+        code: 500,
+        error: 'ERRO INTERNO, MONSTRO!',
+        stdout: null
+      };
+
+      return res;
+    }
+    
   }
 }
