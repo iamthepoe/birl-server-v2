@@ -106,4 +106,8 @@ describe('convertToC method', () => {
     assert.equal(code, imports + 'short');
   });
 
+  it(`should replace "MONSTRAO" for "long" `, () => {
+    const code = birlClient['convertToC']('MONSTRAO');
+    assert.equal(code, imports + 'long');
+  });
 });
