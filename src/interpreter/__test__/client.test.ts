@@ -76,4 +76,9 @@ describe('convertToC method', ()=>{
         assert.equal(imports + 'for  {', code);
     });
 
+    it(`should replace "OH O HOME AI PO" for " {" `, ()=>{
+        const code = birlClient['convertToC']('OH O HOME AI PO ()');
+        assert.equal(imports + ' {', code);
+    });
+
 })
