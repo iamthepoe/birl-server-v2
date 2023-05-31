@@ -58,8 +58,15 @@ $ npm run start:dev
 #O servidor estará rodando na porta 3000
 ```
 
+## ToDo
+
+- [x] Criar testes unitários para o conversor "BirlToC";
+- [ ] Acrescentar compatibilidade com o Windows;
+- [ ] Criar testes para as outras funções da BirlClient;
+- [ ] Expandir a sintaxe (em repúdio à linguagem de quem sobe em árvore).
+
 ## Contribuidores
 
-Caso queira contribuir, é só abrir um PR bonitinho e escrever os testes antes.
+Caso queira contribuir, é só abrir um PR bonitinho e escrever os testes antes. <br>
 
-
+<h4>Nosso sincero obrigado a @lcfpadilha, @akafts e toda a comunidade codebuilder do Brasil.</h4>
