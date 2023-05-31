@@ -45,4 +45,9 @@ describe('convertToC method', ()=>{
         const code = birlClient['convertToC']('VAMO MONSTRO');
         assert.equal(imports + 'continue', code);
     });
+
+    it(`should replace "ELE QUE A GENTE QUER?" for "if" `, ()=>{
+        const code = birlClient['convertToC']('ELE QUE A GENTE QUER?');
+        assert.equal(imports + 'if  {', code);
+    });
 })
