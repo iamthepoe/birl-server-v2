@@ -5,7 +5,7 @@ const birlClient = new BirlClient();
 
 describe('convertToC method', () => {
   const imports = '#include <stdio.h>\n#include <math.h>\n\n';
-
+  
   it('should return a string value', () => {
     const code = birlClient['convertToC']('HORA DO SHOW\nBIRL');
     assert.equal(typeof code, 'string');
@@ -90,5 +90,10 @@ describe('convertToC method', () => {
     const code = birlClient['convertToC']('AJUDA O MALUCO TA DOENTE');
     assert.equal(code, imports + ' ');
   });
-  
+
+  it(`should replace "FRANGO" for "char" `, () => {
+    const code = birlClient['convertToC']('FRANGO');
+    assert.equal(code, imports + 'char');
+  });
+
 });
