@@ -76,6 +76,12 @@ describe('convertToC method', () => {
     assert.strictEqual(code, imports + 'switch  {');
   });
 
+  it(`should replace "ARVORE" for "case :"`, ()=>{
+    const code = birlClient['convertToC']('ARVORE');
+    assert.strictEqual(code, imports + 'case :');
+  });
+
+
   it(`should replace "NEGATIVA BAMBAM" for "while" `, () => {
     const code = birlClient['convertToC']('NEGATIVA BAMBAM');
     assert.strictEqual(code, imports + 'while  {');
