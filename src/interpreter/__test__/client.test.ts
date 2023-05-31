@@ -121,6 +121,11 @@ describe('convertToC method', () => {
     assert.equal(code, imports + 'float');
   });
 
+  it(`should replace "TRAPEZIO DESCENDENTE" for "double" `, () => {
+    const code = birlClient['convertToC']('TRAPEZIO DESCENDENTE');
+    assert.equal(code, imports + 'double');
+  });
+
   it(`should replace "BICEPS" for "unsigned" `, () => {
     const code = birlClient['convertToC']('BICEPS');
     assert.equal(code, imports + 'unsigned');
