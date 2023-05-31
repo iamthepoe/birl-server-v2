@@ -47,6 +47,7 @@ O código é traduzido de (Neo)BIRL para C através de uma função de expressõ
 ## Executando o Projeto
 
 1. <b>Esteja em um ambiente Unix</b> (MacOS/Linux), a função "exec" executará comandos para ambientes de Unix. Caso esteja usando Windows, se vire e vá instalar um Linux da vida ou modifique o código para que ele rode no Windows. 
+2. Tenha o Node.js e o <b>GCC</b> instalados.
 ```bash 
 $ git clone https://github.com/neobirl/server
 $ cd server
