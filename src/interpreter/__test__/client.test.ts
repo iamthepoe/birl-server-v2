@@ -130,4 +130,9 @@ describe('convertToC method', () => {
     const code = birlClient['convertToC']('FIBRA');
     assert.equal(code, imports + 'const');
   });
+
+  it(`should replace "MUTANTE" for "struct"`, ()=>{
+    const code = birlClient['convertToC']('MUTANTE');
+    assert.equal(code, imports + 'struct');
+  })
 });
