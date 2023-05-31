@@ -20,4 +20,9 @@ describe('convertToC method', ()=>{
         const code = birlClient['convertToC']('BIRL');
         assert.equal(imports + '}', code);
     });
+
+    it(`should replace "BORA CUMPADE" for "return" `, ()=>{
+        const code = birlClient['convertToC']('BORA CUMPADE');
+        assert.equal(imports + 'return', code);
+    })
 })
