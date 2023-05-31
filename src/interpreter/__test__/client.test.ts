@@ -4,7 +4,7 @@ import { BirlClient } from '../BirlClient';
 const birlClient = new BirlClient();
 
 describe('convertToC method', () => {
-  const imports = '#include <stdio.h>\n#include <math.h>\n\n';
+  const imports = '#include <stdio.h>\n#include <math.h>\n#include <stdbool.h>\n\n';
   
   it('should return a string value', () => {
     const code = birlClient['convertToC']('HORA DO SHOW\nBIRL');
