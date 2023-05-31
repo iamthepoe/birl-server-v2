@@ -96,4 +96,9 @@ describe('convertToC method', () => {
     assert.equal(code, imports + 'char');
   });
 
+  it(`should replace "MONSTRO" for "int" `, () => {
+    const code = birlClient['convertToC']('MONSTRO');
+    assert.equal(code, imports + 'int');
+  });
+
 });
