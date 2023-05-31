@@ -29,5 +29,11 @@ describe('convertToC method', ()=>{
     it(`should replace "CE QUER VER ESSA PORRA?" for "printf" `, ()=>{
         const code = birlClient['convertToC']('CE QUER VER ESSA PORRA?');
         assert.equal(imports + 'printf', code);
-    })
+    });
+
+    it(`should replace "QUE QUE CE QUER MONSTRAO?" for "scanf" `, ()=>{
+        const code = birlClient['convertToC']('QUE QUE CE QUER MONSTRAO?');
+        assert.equal(imports + 'scanf', code);
+    });
+    
 })
