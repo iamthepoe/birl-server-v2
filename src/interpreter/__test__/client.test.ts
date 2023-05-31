@@ -35,5 +35,10 @@ describe('convertToC method', ()=>{
         const code = birlClient['convertToC']('QUE QUE CE QUER MONSTRAO?');
         assert.equal(imports + 'scanf', code);
     });
-    
+
+    it(`should replace "SAI FILHO DA PUTA" for "break" `, ()=>{
+        const code = birlClient['convertToC']('SAI FILHO DA PUTA');
+        assert.equal(imports + 'break', code);
+    });
+
 })
