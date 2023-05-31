@@ -140,7 +140,7 @@ export class BirlClient {
     );
 
     //Colocando as bibliotecas
-    birlCode = '#include <stdio.h>\n#include <math.h>\n\n' + birlCode;
+    birlCode = '#include <stdio.h>\n#include <math.h>\n#include <stdbool.h>\n\n' + birlCode;
 
     return birlCode;
   }
