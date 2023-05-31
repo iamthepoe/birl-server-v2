@@ -60,4 +60,10 @@ describe('convertToC method', ()=>{
         const code = birlClient['convertToC']('QUE NUM VAI DAR O QUE?');
         assert.equal(imports + '} else if  {', code);
     });
+
+    it(`should replace "QUE NAO VAI DAR O QUE?" for "else if" `, ()=>{
+        const code = birlClient['convertToC']('QUE NAO VAI DAR O QUE?');
+        assert.equal(imports + '} else if  {', code);
+    });
+
 })
