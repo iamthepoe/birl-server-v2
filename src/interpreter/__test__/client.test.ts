@@ -85,4 +85,10 @@ describe('convertToC method', () => {
     const code = birlClient['convertToC']('AJUDA O MALUCO TA DOENTE');
     assert.equal(code, imports + ' ');
   });
+
+  it(`should replace "AJUDA O MALUCO QUE TA DOENTE" for "" `, () => {
+    const code = birlClient['convertToC']('AJUDA O MALUCO TA DOENTE');
+    assert.equal(code, imports + ' ');
+  });
+  
 });
