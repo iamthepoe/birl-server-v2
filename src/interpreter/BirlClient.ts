@@ -125,8 +125,6 @@ export class BirlClient {
     //Colocando as bibliotecas
     birlCode = '#include <stdio.h>\n#include <math.h>\n\n' + birlCode;
 
-    this.printCode(birlCode);
-
     return birlCode;
   }
 
@@ -172,10 +170,9 @@ export class BirlClient {
     try{
       const code = this.convertToC(birlCode);
       const fileName = 'birl-' + Date.now();
-
       await this.writeFile(`${fileName}.txt`, stdin);
       await this.writeFile(`${fileName}.c`, code);
-
+      this.printCode(code);
       return this.compile(fileName);
     }catch{
       const res: IClientResponse = {
@@ -186,6 +183,5 @@ export class BirlClient {
 
       return res;
     }
-    
   }
 }
