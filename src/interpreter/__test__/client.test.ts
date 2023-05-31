@@ -110,4 +110,9 @@ describe('convertToC method', () => {
     const code = birlClient['convertToC']('MONSTRAO');
     assert.equal(code, imports + 'long');
   });
+
+  it(`should replace "TRAPEZIO" for "float" `, () => {
+    const code = birlClient['convertToC']('TRAPEZIO');
+    assert.equal(code, imports + 'float');
+  });
 });
