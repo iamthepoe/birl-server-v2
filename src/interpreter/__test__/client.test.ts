@@ -125,4 +125,9 @@ describe('convertToC method', () => {
     const code = birlClient['convertToC']('BICEPS');
     assert.equal(code, imports + 'unsigned');
   });
+
+  it(`should replace "FIBRA" for "const"`, ()=>{
+    const code = birlClient['convertToC']('FIBRA');
+    assert.equal(code, imports + 'const');
+  });
 });
