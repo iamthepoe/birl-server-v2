@@ -101,4 +101,9 @@ describe('convertToC method', () => {
     assert.equal(code, imports + 'int');
   });
 
+  it(`should replace "MONSTRINHO" for "short" `, () => {
+    const code = birlClient['convertToC']('MONSTRINHO');
+    assert.equal(code, imports + 'short');
+  });
+
 });
