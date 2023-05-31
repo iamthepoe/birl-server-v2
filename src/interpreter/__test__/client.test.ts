@@ -126,6 +126,11 @@ describe('convertToC method', () => {
     assert.equal(code, imports + 'unsigned');
   });
 
+  it(`should replace "TREZE MEMO" for "bool" `, ()=>{
+    const code = birlClient['convertToC']('TREZE MEMO');
+    assert.equal(code, imports + 'bool');
+  });
+
   it(`should replace "FIBRA" for "const"`, ()=>{
     const code = birlClient['convertToC']('FIBRA');
     assert.equal(code, imports + 'const');
