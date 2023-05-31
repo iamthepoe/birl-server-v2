@@ -50,4 +50,9 @@ describe('convertToC method', ()=>{
         const code = birlClient['convertToC']('ELE QUE A GENTE QUER?');
         assert.equal(imports + 'if  {', code);
     });
+
+    it(`should replace "NAO VAI DAR NAO" for "else" `, ()=>{
+        const code = birlClient['convertToC']('NAO VAI DAR NAO');
+        assert.equal(imports + '} else {', code);
+    });
 })
