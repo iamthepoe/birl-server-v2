@@ -10,8 +10,7 @@
 
 ## Introdução
 
-NeoBIRL (Neo-<b>B</b>ambam's "<b>I</b>t's show time" <b>R</b>ecursive <b>L</b>anguage) nada mais é do que uma linguagem humorística e OAG (Orientada a Gambiarra)
-baseada na semi-falecida <a href="https://github.com/birl-language/" target="_blank">BIRL Language</a>. NeoBIRL funciona do mesmo modo que sua antecessora, mas com algumas funcionalidades a mais. Pretendemos dar continuidade para a linguagem mais TREZE já criada!
+NeoBIRL (Neo-<b>B</b>ambam's "<b>I</b>t's show time" <b>R</b>ecursive <b>L</b>anguage) nada mais é do que uma linguagem humorística, OAG (Orientada a Gambiarra), Go Horse e baseada na semi-falecida <a href="https://github.com/birl-language/" target="_blank">BIRL Language</a>. NeoBIRL funciona do mesmo modo que sua antecessora, mas com algumas funcionalidades a mais. Pretendemos dar continuidade para a linguagem mais TREZE já criada!
 
 ## Como funciona
 
