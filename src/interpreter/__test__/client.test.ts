@@ -11,74 +11,80 @@ describe('convertToC method', ()=>{
         assert.equal(typeof code, 'string');
     });
 
-    it(`should replace "HORA DO SHOW" for "int main(void){" `, ()=>{
+    
+    it(`should replace "HORA DO SHOW" for "int main(void){" `, () => {
         const code = birlClient['convertToC']('HORA DO SHOW');
-        assert.equal(imports + 'int main (void) {', code);
+        assert.strictEqual(code, imports + 'int main (void) {');
     });
 
-    it(`should replace "BIRL" for "}" `, ()=>{
+    it(`should replace "BIRL" for "}" `, () => {
         const code = birlClient['convertToC']('BIRL');
-        assert.equal(imports + '}', code);
+        assert.strictEqual(code, imports + '}');
     });
 
-    it(`should replace "BORA CUMPADE" for "return" `, ()=>{
+    it(`should replace "BORA CUMPADE" for "return" `, () => {
         const code = birlClient['convertToC']('BORA CUMPADE');
-        assert.equal(imports + 'return', code);
+        assert.strictEqual(code, imports + 'return');
     });
 
-    it(`should replace "CE QUER VER ESSA PORRA?" for "printf" `, ()=>{
+    it(`should replace "CE QUER VER ESSA PORRA?" for "printf" `, () => {
         const code = birlClient['convertToC']('CE QUER VER ESSA PORRA?');
-        assert.equal(imports + 'printf', code);
+        assert.strictEqual(code, imports + 'printf');
     });
 
-    it(`should replace "QUE QUE CE QUER MONSTRAO?" for "scanf" `, ()=>{
+    it(`should replace "QUE QUE CE QUER MONSTRAO?" for "scanf" `, () => {
         const code = birlClient['convertToC']('QUE QUE CE QUER MONSTRAO?');
-        assert.equal(imports + 'scanf', code);
+        assert.strictEqual(code, imports + 'scanf');
     });
 
-    it(`should replace "SAI FILHO DA PUTA" for "break" `, ()=>{
+    it(`should replace "SAI FILHO DA PUTA" for "break" `, () => {
         const code = birlClient['convertToC']('SAI FILHO DA PUTA');
-        assert.equal(imports + 'break', code);
+        assert.strictEqual(code, imports + 'break');
     });
 
-    it(`should replace "VAMO MONSTRO" for "continue" `, ()=>{
+    it(`should replace "VAMO MONSTRO" for "continue" `, () => {
         const code = birlClient['convertToC']('VAMO MONSTRO');
-        assert.equal(imports + 'continue', code);
+        assert.strictEqual(code, imports + 'continue');
     });
 
-    it(`should replace "ELE QUE A GENTE QUER?" for "if" `, ()=>{
+    it(`should replace "ELE QUE A GENTE QUER?" for "if" `, () => {
         const code = birlClient['convertToC']('ELE QUE A GENTE QUER?');
-        assert.equal(imports + 'if  {', code);
+        assert.strictEqual(code, imports + 'if  {');
     });
 
-    it(`should replace "NAO VAI DAR NAO" for "else" `, ()=>{
+    it(`should replace "NAO VAI DAR NAO" for "else" `, () => {
         const code = birlClient['convertToC']('NAO VAI DAR NAO');
-        assert.equal(imports + '} else {', code);
+        assert.strictEqual(code, imports + '} else {');
     });
 
-    it(`should replace "QUE NUM VAI DAR O QUE?" for "else if" `, ()=>{
+    it(`should replace "QUE NUM VAI DAR O QUE?" for "else if" `, () => {
         const code = birlClient['convertToC']('QUE NUM VAI DAR O QUE?');
-        assert.equal(imports + '} else if  {', code);
+        assert.strictEqual(code, imports + '} else if  {');
     });
 
-    it(`should replace "QUE NAO VAI DAR O QUE?" for "else if" `, ()=>{
+    it(`should replace "QUE NAO VAI DAR O QUE?" for "else if" `, () => {
         const code = birlClient['convertToC']('QUE NAO VAI DAR O QUE?');
-        assert.equal(imports + '} else if  {', code);
+        assert.strictEqual(code, imports + '} else if  {');
     });
 
-    it(`should replace "NEGATIVA BAMBAM" for "while" `, ()=>{
+    it(`should replace "NEGATIVA BAMBAM" for "while" `, () => {
         const code = birlClient['convertToC']('NEGATIVA BAMBAM');
-        assert.equal(imports + 'while  {', code);
+        assert.strictEqual(code, imports + 'while  {');
     });
 
-    it(`should replace "MAIS QUERO MAIS" for "for" `, ()=>{
+    it(`should replace "MAIS QUERO MAIS" for "for" `, () => {
         const code = birlClient['convertToC']('MAIS QUERO MAIS');
-        assert.equal(imports + 'for  {', code);
+        assert.strictEqual(code, imports + 'for  {');
     });
 
-    it(`should replace "OH O HOME AI PO" for " {" `, ()=>{
+    it(`should replace "OH O HOME AI PO" for " {" `, () => {
         const code = birlClient['convertToC']('OH O HOME AI PO ()');
-        assert.equal(imports + ' {', code);
+        assert.strictEqual(code, imports + ' {');
+    });
+
+    it(`should replace "AJUDA O MALUCO TA DOENTE" for "" `, ()=>{
+        const code = birlClient['convertToC']('AJUDA O MALUCO TA DOENTE');
+        assert.equal(code, imports + ' ');
     });
 
 })
