@@ -104,6 +104,7 @@ export class BirlClient {
       'continue'
     );
 
+    //Traduzindo const
     birlCode = birlCode.replace(
       /(FIBRA)(?=(?:[^"]|"[^"]*")*$)/g,
       'const'
