@@ -71,4 +71,9 @@ describe('convertToC method', ()=>{
         assert.equal(imports + 'while  {', code);
     });
 
+    it(`should replace "MAIS QUERO MAIS" for "for" `, ()=>{
+        const code = birlClient['convertToC']('MAIS QUERO MAIS');
+        assert.equal(imports + 'for  {', code);
+    });
+
 })
