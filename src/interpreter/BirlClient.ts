@@ -134,6 +134,11 @@ export class BirlClient {
       'unsigned'
     );
 
+    birlCode = birlCode.replace(
+      /(TREZE MEMO)(?=(?:[^"]|"[^"]*")*$)/g,
+      'bool'
+    );
+
     //Colocando as bibliotecas
     birlCode = '#include <stdio.h>\n#include <math.h>\n\n' + birlCode;
 
