@@ -64,16 +64,37 @@ export class BirlClient {
       /(QUE N[AÃ]O VAI DAR O QUE[\?]?)(?=(?:[^"]|"[^"]*")*$)(.*)/g,
       '} else if $2 {'
     );
+
+    //Traduzindo Switch
+    birlCode = birlCode.replace(
+      /(DERRUBAR ARVORES)(?=(?:[^"]|"[^"]*")*$)(.*)/g,
+      'switch $2 {'
+    );
+
+    // Traduzindo case
+    birlCode = birlCode.replace(
+      /(ARVORE)(?=(?:[^"]|"[^"]*")*$)(.*)/g,
+      'case $2:'
+    );
+
+    // Traduzindo default
+    birlCode = birlCode.replace(
+      /(IBERAPUERA)(?=(?:[^"]|"[^"]*")*$)/g,
+      'default:'
+    );
+
     //Traduzindo while
     birlCode = birlCode.replace(
       /(NEGATIVA BAMBAM)(?=(?:[^"]|"[^"]*")*$)(.*)/g,
       'while $2 {'
     );
+
     //Traduzindo for
     birlCode = birlCode.replace(
       /(MAIS QUERO MAIS)(?=(?:[^"]|"[^"]*")*$)(.*)/g,
       'for $2 {'
     );
+
     //Traduzindo declaração de função
     birlCode = birlCode.replace(
       /(O[H]? O HOM[EI][M]? A[IÍ] PO[ \t]*\()(?=(?:[^"]|"[^"]*")*$)(.*)(\))/g,

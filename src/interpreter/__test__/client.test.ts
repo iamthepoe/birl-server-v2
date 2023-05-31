@@ -81,8 +81,8 @@ describe('convertToC method', () => {
     assert.strictEqual(code, imports + 'case :');
   });
 
-  it(`should replace "ARVORE DO PARQUE IBERAPUERA" for "default:"`, ()=>{
-    const code = birlClient['convertToC']('ARVORE DO PARQUE IBERAPUERA');
+  it(`should replace "IBERAPUERA" for "default:"`, ()=>{
+    const code = birlClient['convertToC']('IBERAPUERA');
     assert.strictEqual(code, imports + 'default:');
   });
 
