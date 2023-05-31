@@ -1,5 +1,6 @@
 # birl-server-v2
 
 ToDo:
-Constante
-Struct
+Constante;
+Struct;
+Switch-Case;
