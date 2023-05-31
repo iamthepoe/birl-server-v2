@@ -11,6 +11,11 @@ describe('convertToC method', () => {
     assert.equal(typeof code, 'string');
   });
 
+  it('should import all libs', () => {
+    const code = birlClient['convertToC']('HORA DO SHOW\nBIRL');
+    assert.equal(code.includes(imports), true);
+  });
+
   it(`should replace "HORA DO SHOW" for "int main(void){" `, () => {
     const code = birlClient['convertToC']('HORA DO SHOW');
     assert.strictEqual(code, imports + 'int main (void) {');
@@ -116,8 +121,8 @@ describe('convertToC method', () => {
     assert.equal(code, imports + 'float');
   });
 
-  it(`should replace "TRAPEZIO DESCENDENTE" for "double" `, () => {
-    const code = birlClient['convertToC']('TRAPEZIO DESCENDENTE');
-    assert.equal(code, imports + 'double');
+  it(`should replace "BICEPS" for "unsigned" `, () => {
+    const code = birlClient['convertToC']('BICEPS');
+    assert.equal(code, imports + 'unsigned');
   });
 });
