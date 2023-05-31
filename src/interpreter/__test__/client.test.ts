@@ -115,4 +115,9 @@ describe('convertToC method', () => {
     const code = birlClient['convertToC']('TRAPEZIO');
     assert.equal(code, imports + 'float');
   });
+
+  it(`should replace "TRAPEZIO DESCENDENTE" for "double" `, () => {
+    const code = birlClient['convertToC']('TRAPEZIO DESCENDENTE');
+    assert.equal(code, imports + 'double');
+  });
 });
