@@ -71,6 +71,11 @@ describe('convertToC method', () => {
     assert.strictEqual(code, imports + '} else if  {');
   });
 
+  it(`should replace "DERRUBAR ARVORES" for "switch  {"`, ()=>{
+    const code = birlClient['convertToC']('DERRUBAR ARVORES');
+    assert.strictEqual(code, imports + 'switch  {');
+  });
+
   it(`should replace "NEGATIVA BAMBAM" for "while" `, () => {
     const code = birlClient['convertToC']('NEGATIVA BAMBAM');
     assert.strictEqual(code, imports + 'while  {');
