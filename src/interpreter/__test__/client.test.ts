@@ -24,5 +24,10 @@ describe('convertToC method', ()=>{
     it(`should replace "BORA CUMPADE" for "return" `, ()=>{
         const code = birlClient['convertToC']('BORA CUMPADE');
         assert.equal(imports + 'return', code);
+    });
+
+    it(`should replace "CE QUER VER ESSA PORRA?" for "printf" `, ()=>{
+        const code = birlClient['convertToC']('CE QUER VER ESSA PORRA?');
+        assert.equal(imports + 'printf', code);
     })
 })
