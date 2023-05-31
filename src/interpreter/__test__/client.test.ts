@@ -41,4 +41,8 @@ describe('convertToC method', ()=>{
         assert.equal(imports + 'break', code);
     });
 
+    it(`should replace "VAMO MONSTRO" for "continue" `, ()=>{
+        const code = birlClient['convertToC']('VAMO MONSTRO');
+        assert.equal(imports + 'continue', code);
+    });
 })
