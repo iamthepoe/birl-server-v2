@@ -104,6 +104,11 @@ export class BirlClient {
       'continue'
     );
 
+    birlCode = birlCode.replace(
+      /(FIBRA)(?=(?:[^"]|"[^"]*")*$)/g,
+      'const'
+    );
+    
     //Traduzindo os tipos de dados
     birlCode = birlCode.replace(/(FRANGO)(?=(?:[^"]|"[^"]*")*$)/g, 'char');
     birlCode = birlCode.replace(/(MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'int');
