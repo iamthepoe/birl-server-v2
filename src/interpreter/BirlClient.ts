@@ -1,12 +1,3 @@
-/**********************************************************************
- *
- * birlToC.js: recebe um código em BIRL e retorna o mesmo traduzido
- * para C.
- *
- * A tradução é feita com um simples replace no código birl com o seu respectivo valor
- * em C, a regex (?=(?:[^"]|"[^"]*")*$) evita que sejam substituido os valores dentro
- * de aspas.
- ***********************************************************************/
 import { exec } from 'child_process';
 import fs from 'fs';
 import { IClientResponse } from '../interfaces/IClientResponse';
