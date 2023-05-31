@@ -66,4 +66,9 @@ describe('convertToC method', ()=>{
         assert.equal(imports + '} else if  {', code);
     });
 
+    it(`should replace "NEGATIVA BAMBAM" for "while" `, ()=>{
+        const code = birlClient['convertToC']('NEGATIVA BAMBAM');
+        assert.equal(imports + 'while  {', code);
+    });
+
 })
